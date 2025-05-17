@@ -1,0 +1,877 @@
+/* Global styles */
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f7f7f7;
+    color: #2c3e50;
+  }
+  
+  nav {
+    background: linear-gradient(135deg, #003580, #0056b3);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* <- Space between left and right sections */
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffd700;
+    transform: scale(1.08);
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  nav a:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .login-link {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Form styling */
+  /* Overall page background */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  padding: 20px;
+}
+
+/* Login form card */
+form {
+  max-width: 400px;
+  width: 100%;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+
+form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Input fields */
+form input {
+  width: 90%;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 15px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #0071c2;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 113, 194, 0.4);
+}
+
+/* Login button */
+form button {
+  width: 99%;
+  padding: 16px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0071c2, #005fa3);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #005fa3, #004080);
+  transform: translateY(-2px);
+}
+
+/* Register link below form */
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.register-link a {
+  color: #0071c2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+  
+  /* Home cards layout */
+  .home-container {
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    position: relative;
+    min-height: 100vh;
+    z-index: 1
+    
+  }
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    
+  }
+  .hotel-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .hotel-info {
+    padding: 15px;
+  }
+  
+  .hotel-info h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .hotel-info p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .home-container {
+      padding: 20px 10px;
+    }
+  }
+  
+  /*Home styles*/
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .search-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    padding-top: 10px;
+  }
+  
+  .search-input {
+    width: 300px;
+    max-width: 80%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: border-color 0.3s;
+  }
+  
+  .search-input:focus {
+    border-color: #007bff;
+  }
+  
+  .hotel-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the cards horizontally */
+    gap: 20px;
+  }
+  
+  .hotel-card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  
+  .hotel-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .hotel-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .hotel-info {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .hotel-info h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .hotel-location {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .hotel-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .hotel-description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .hotel-rating {
+    font-size: 1rem;
+    color: #f39c12;
+    margin-bottom: 20px;
+  }
+  
+  .book-now-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-now-btn:hover {
+    background-color: #0056b3;
+  }
+
+  
+ /* Hotel Details Page Styles */
+.hotel-details-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Image Slider */
+.hotel-image-slider {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hotel-image-main {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.hotel-details-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.hotel-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.hotel-image-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.hotel-image-main {
+  width: 100%;
+  max-width: 600px; /* Reduce max size */
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.hotel-image-main:hover {
+  transform: scale(1.02);
+}
+.hotel-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.hotel-details-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.hotel-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 1rem); /* Two cards per row on desktop */
+  min-width: 280px; /* Responsive minimum width */
+  box-sizing: border-box;
+}
+
+.hotel-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.hotel-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .hotel-card {
+    width: 100%; /* Stacks cards on small screens */
+  }
+}
+
+.hotel-meta {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Align vertically */
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  text-align: center;
+}
+
+
+.hotel-meta span {
+  display: flex;
+  align-items: center;
+}
+
+
+.hotel-details p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+}
+
+.hotel-amenities,
+.reviews {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+.hotel-amenities li {
+  margin: 0.3rem 0;
+  list-style-type: disc;
+  margin-left: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.amenity-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.amenity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background-color: #f7faff;
+}
+
+.review-item {
+  border-top: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+.review-item:first-child {
+  border-top: none;
+}
+
+.hotel-selection {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hotel-selection label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.hotel-selection input,
+.hotel-selection select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+.hotel-selection input:focus,
+.hotel-selection select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.price-summary {
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: background 0.3s;
+}
+
+.book-now-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: #3498db;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.book-now-btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hotel-title {
+    font-size: 2rem;
+  }
+
+  .hotel-image-main {
+    width: 100%;
+  }
+
+  .hotel-selection {
+    margin-bottom: 1rem;
+  }
+}
+.hotel-image-and-booking {
+  display: flex;
+  max-width: 1000px;
+  margin: 2rem auto;
+  height: 380px; /* Lock both image & booking to same height */
+  gap: 2rem;
+  box-sizing: border-box;
+  align-items: stretch;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.hotel-image-slider {
+  flex: 1;
+  max-width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotel-image-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+.booking-side-panel {
+  flex: 1;
+  max-width: 48%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.booking-side-panel::after {
+  content: '';
+  display: block;
+  height: 1rem;
+}
+
+.booking-side-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.booking-side-panel::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+.booking-side-panel .hotel-selection label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.booking-side-panel .hotel-selection input,
+.booking-side-panel .hotel-selection select {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.price-summary {
+  background-color: #f1f5f9;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.book-now-btn {
+  background: #3498db;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background: #2980b9;
+}
+@media (max-width: 768px) {
+  .hotel-image-and-booking {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .hotel-image-slider,
+  .booking-side-panel {
+    max-width: 100%;
+  }
+}
+.hotel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hotel-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hotel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hotel-details-cards {
+  display: flex;
+  justify-content: space-between; /* To align location, price, and rating in a line */
+  gap: 20px;
+}
+
+.hotel-card {
+  width: 30%;
+  padding: 10px;
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-description {
+  margin-top: 20px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-booking-options {
+  margin-top: 20px;
+}
+
+/* About Us Page Styles */
+.about-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+}
+
+.about-container h1 {
+  margin-bottom: 1rem;
+  color: #003580;
+}
+
+.about-container p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/*register styles*/
+/* Page container */
+.page-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5; /* Soft light background */
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Title */
+.form-wrapper h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+  color: #003580; /* Blue color */
+}
+
+/* Form Structure */
+
+
+/* Floating Label Container */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;  
+
+}
+
+/* For First Name + Last Name side-by-side */
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+/* Making both fields equal width */
+.row .form-group {
+  flex: 1;
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 5px 5px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+}
+
+/* Focus Style */
+input:focus {
+  border-color: #0071c2;
+}
+
+/* Floating Labels */
+label {
+  position: absolute;
+  font-size: 14px;
+  transition: 0.2s ease all;
+  background: #fff;
+  padding: 0 4px;
+  pointer-events: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: #0071c2;
+}
+
+/* Button */
+button {
+  padding: 12px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+
+
+  
