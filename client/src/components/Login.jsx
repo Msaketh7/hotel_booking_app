@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext'; // <-- import context
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // <-- use login from context
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setErrorMsg(''); // clear error on input change
+    setErrorMsg('');
   };
 
   const handleSubmit = async (e) => {
@@ -19,24 +21,15 @@ const Login = () => {
     setErrorMsg('');
 
     try {
-      // Send login request to backend
       const res = await axios.post('http://localhost:5000/api/users/login', form);
-
-      // Extract token from response
       const { token } = res.data;
 
-      // Save token to localStorage
       localStorage.setItem('token', token);
-
+      login(); // <-- notify context that login happened
       alert('Login successful!');
-
-      // Clear form (optional)
       setForm({ email: '', password: '' });
-
-      // Redirect to profile page
       navigate('/profile');
     } catch (err) {
-      // Show error message from backend or generic error
       setErrorMsg(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setLoading(false);
