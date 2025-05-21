@@ -8,8 +8,17 @@ import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import Admin from './components/Admin';
 import HotelDetails from './components/HotelDetails';
+import BookingConfirm from './components/BookingConfirm';
 import About from './components/Aboutus'; 
 import './style.css';
+import './Styles/navbar.css';
+import './Styles/home.css';
+import './Styles/form.css';
+import './Styles/hoteldetails.css';
+import './Styles/media.css';
+import './Styles/profile.css';
+import './Styles/bookingconfirmation.css';
+
 
 
 function App() {
@@ -23,6 +32,7 @@ function App() {
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/hotels/:id" element={<HotelDetails />} />
+        <Route path="/confirm" element={<BookingConfirm />} />
         <Route path="/about" element={<About />} />
 
       </Routes>

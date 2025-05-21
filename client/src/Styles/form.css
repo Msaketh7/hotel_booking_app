@@ -1,0 +1,199 @@
+  /* Overall page background */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  padding: 20px;
+}
+
+/* Login form card */
+form {
+  max-width: 400px;
+  width: 100%;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+
+form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Input fields */
+form input {
+  width: 90%;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 15px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #0071c2;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 113, 194, 0.4);
+}
+
+/* Login button */
+form button {
+  width: 99%;
+  padding: 16px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0071c2, #005fa3);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #005fa3, #004080);
+  transform: translateY(-2px);
+}
+
+
+/* Register link below form */
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.register-link a {
+  color: #0071c2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+
+/*register styles*/
+.page-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5; /* Soft light background */
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Title */
+.form-wrapper h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+  color: #003580; /* Blue color */
+}
+
+/* Floating Label Container */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;  
+
+}
+
+/* For First Name + Last Name side-by-side */
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+/* Making both fields equal width */
+.row .form-group {
+  flex: 1;
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 5px 5px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+}
+
+/* Focus Style */
+input:focus {
+  border-color: #0071c2;
+}
+
+/* Floating Labels */
+label {
+  position: absolute;
+  font-size: 14px;
+  transition: 0.2s ease all;
+  background: #fff;
+  padding: 0 4px;
+  pointer-events: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: #0071c2;
+}
+
+/* Button */
+button {
+  padding: 12px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.95);
+}

@@ -3,16 +3,13 @@ const router = express.Router();
 const Booking = require('../models/Booking');
 const authMiddleware = require('../middlewares/auth');
 
-// middleware Auth
-router.get('/', authMiddleware, async (req, res) => {
-    const bookings = await Booking.find();
-    res.json(bookings);
-  });
-
-// POST booking
-router.post('/', async (req, res) => {
+// Create a booking (protected route)
+router.post('/', authMiddleware, async (req, res) => {
   try {
-    const booking = new Booking(req.body);
+    const booking = new Booking({
+      ...req.body,
+      user: req.user._id  // Associate booking with logged-in user
+    });
     await booking.save();
     res.status(201).json(booking);
   } catch (err) {
@@ -20,10 +17,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET all bookings
-router.get('/', async (req, res) => {
-  const bookings = await Booking.find();
-  res.json(bookings);
+// Get all bookings of current user (protected)
+router.get('/my-bookings', authMiddleware, async (req, res) => {
+  try {
+    const bookings = await Booking.find({ user: req.user._id });
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
-
-module.exports = router;
+module.exports = router; 

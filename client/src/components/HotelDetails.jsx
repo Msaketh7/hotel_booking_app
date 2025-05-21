@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Dummy hotels data
 const dummyHotels = [
@@ -48,6 +49,7 @@ const dummyHotels = [
 ];
 
 const HotelDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const hotel = dummyHotels.find((h) => h.id === id);
 
@@ -86,6 +88,35 @@ const HotelDetails = () => {
   const totalPrice = hotel.price * totalNights * rooms;
   const tax = totalPrice * taxRate;
   const finalPrice = totalPrice + tax;
+
+ const handleBookNow = (hotel) => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (!isLoggedIn) {
+    navigate('/login', { state: { from: '/confirm',
+      hotel,
+      checkInDate,
+      checkOutDate,
+      guests,
+      rooms,
+      finalPrice,
+    },
+  });
+}
+ else
+ {
+  navigate("/confirm", {
+      state: {
+        hotel,
+        checkInDate,
+        checkOutDate,
+        guests,
+        rooms,
+        finalPrice,
+      },
+ });
+}
+ };
+
 
   return (
     <div className="hotel-details-container">
@@ -150,7 +181,7 @@ const HotelDetails = () => {
       <p><strong>Final Price: ${finalPrice.toFixed(2)}</strong></p>
     </div>
 
-    <button className="book-now-btn">Confirm Booking</button>
+    <button className="book-now-btn" onClick={() => handleBookNow(hotel)}>Book Now</button>
   </div>
 </div>
 <div className="hotel-info">
